@@ -1,8 +1,9 @@
-const { PrismaClient } = require("@prisma/client");
+import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 // GET all users
-const getAllUsers = async (req, res) => {
+export const getAllUsers = async (req, res) => {
   try {
     const users = await prisma.user.findMany(); //user is the model name in Prisma schema
     res.json(users);
@@ -13,7 +14,7 @@ const getAllUsers = async (req, res) => {
 };
 
 // CREATE new user
-const createUser = async (req, res) => {
+export const createUser = async (req, res) => {
   const { name, email } = req.body;
 
   try {
@@ -25,9 +26,4 @@ const createUser = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server error" });
   }
-};
-
-module.exports = {
-  getAllUsers,
-  createUser,
 };

@@ -1,8 +1,8 @@
-const express = require("express");
-const app = express();
-const userRoutes = require("./routes/userRoutes");
+import express from "express";
+import userRoutes from "./routes/userRoutes.js";
 
-app.use(express.json()); // Parse JSON request body
+const app = express();
+app.use(express.json());
 
 // Routes
 app.use("/api/users", userRoutes);

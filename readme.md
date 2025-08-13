@@ -70,6 +70,17 @@ Builds the Prisma Client in `.prisma/client` (or a custom folder).
 Run this after every schema change if you do not run `migrate dev`.
 
 ---
+## 8. Apply Changes After Updating Schema
+
+If you make changes to your Prisma schema (e.g., adding/removing columns, changing constraints):
+
+```bash
+# 1. Apply changes to DB
+npx prisma migrate dev --name update_user_table
+
+# 2. Regenerate Prisma Client
+npx prisma generate
+```
 
 ## Notes
 - Make sure your `.env` contains the correct MySQL connection string:

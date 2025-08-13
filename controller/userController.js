@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import pkg from "@prisma/client";
+const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
 
@@ -19,7 +20,7 @@ export const createUser = async (req, res) => {
 
   try {
     const newUser = await prisma.user.create({
-      data: { name, email },
+      data: { name:name, email:email },
     });
     res.status(201).json(newUser);
   } catch (error) {
